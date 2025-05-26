@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.labelmin = new System.Windows.Forms.Label();
             this.labelhr = new System.Windows.Forms.Label();
             this.btnCancelAlert = new System.Windows.Forms.Button();
             this.btnSetAlert = new System.Windows.Forms.Button();
@@ -41,12 +42,20 @@
             this.txtDate = new System.Windows.Forms.TextBox();
             this.txtTime = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnLog = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnPause = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.listStopWatchLog = new System.Windows.Forms.ListBox();
+            this.txtStopWatch = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.timerClcok = new System.Windows.Forms.Timer(this.components);
             this.timerAlert = new System.Windows.Forms.Timer(this.components);
-            this.labelmin = new System.Windows.Forms.Label();
+            this.timerStopWatch = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -80,6 +89,14 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "時鐘";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // labelmin
+            // 
+            this.labelmin.Location = new System.Drawing.Point(380, 214);
+            this.labelmin.Name = "labelmin";
+            this.labelmin.Size = new System.Drawing.Size(38, 34);
+            this.labelmin.TabIndex = 0;
+            this.labelmin.Text = "分";
             // 
             // labelhr
             // 
@@ -162,6 +179,13 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnLog);
+            this.tabPage2.Controls.Add(this.btnStop);
+            this.tabPage2.Controls.Add(this.btnReset);
+            this.tabPage2.Controls.Add(this.btnPause);
+            this.tabPage2.Controls.Add(this.btnStart);
+            this.tabPage2.Controls.Add(this.listStopWatchLog);
+            this.tabPage2.Controls.Add(this.txtStopWatch);
             this.tabPage2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
@@ -170,6 +194,83 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "碼表";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnLog
+            // 
+            this.btnLog.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnLog.Location = new System.Drawing.Point(501, 184);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Size = new System.Drawing.Size(195, 44);
+            this.btnLog.TabIndex = 3;
+            this.btnLog.Text = "紀錄";
+            this.btnLog.UseVisualStyleBackColor = false;
+            this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.BackColor = System.Drawing.Color.Red;
+            this.btnStop.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnStop.Location = new System.Drawing.Point(300, 234);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(396, 44);
+            this.btnStop.TabIndex = 3;
+            this.btnStop.Text = "停止並歸零";
+            this.btnStop.UseVisualStyleBackColor = false;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.Silver;
+            this.btnReset.Location = new System.Drawing.Point(300, 184);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(195, 44);
+            this.btnReset.TabIndex = 3;
+            this.btnReset.Text = "歸零";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnPause
+            // 
+            this.btnPause.BackColor = System.Drawing.Color.Yellow;
+            this.btnPause.Location = new System.Drawing.Point(501, 134);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(195, 44);
+            this.btnPause.TabIndex = 3;
+            this.btnPause.Text = "暫停";
+            this.btnPause.UseVisualStyleBackColor = false;
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
+            // 
+            // btnStart
+            // 
+            this.btnStart.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnStart.Location = new System.Drawing.Point(300, 134);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(195, 44);
+            this.btnStart.TabIndex = 3;
+            this.btnStart.Text = "開始";
+            this.btnStart.UseVisualStyleBackColor = false;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // listStopWatchLog
+            // 
+            this.listStopWatchLog.FormattingEnabled = true;
+            this.listStopWatchLog.ItemHeight = 25;
+            this.listStopWatchLog.Location = new System.Drawing.Point(8, 123);
+            this.listStopWatchLog.Name = "listStopWatchLog";
+            this.listStopWatchLog.Size = new System.Drawing.Size(270, 254);
+            this.listStopWatchLog.TabIndex = 2;
+            // 
+            // txtStopWatch
+            // 
+            this.txtStopWatch.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtStopWatch.Enabled = false;
+            this.txtStopWatch.Font = new System.Drawing.Font("微軟正黑體", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtStopWatch.Location = new System.Drawing.Point(3, 3);
+            this.txtStopWatch.Name = "txtStopWatch";
+            this.txtStopWatch.Size = new System.Drawing.Size(786, 114);
+            this.txtStopWatch.TabIndex = 1;
+            this.txtStopWatch.Text = "Test";
+            this.txtStopWatch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tabPage3
             // 
@@ -189,13 +290,10 @@
             // 
             this.timerAlert.Tick += new System.EventHandler(this.timerAlert_Tick);
             // 
-            // labelmin
+            // timerStopWatch
             // 
-            this.labelmin.Location = new System.Drawing.Point(380, 214);
-            this.labelmin.Name = "labelmin";
-            this.labelmin.Size = new System.Drawing.Size(38, 34);
-            this.labelmin.TabIndex = 0;
-            this.labelmin.Text = "分";
+            this.timerStopWatch.Interval = 1;
+            this.timerStopWatch.Tick += new System.EventHandler(this.timerStopWatch_Tick);
             // 
             // Form1
             // 
@@ -209,6 +307,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -230,6 +330,14 @@
         private System.Windows.Forms.Button btnCancelAlert;
         private System.Windows.Forms.Label labelhr;
         private System.Windows.Forms.Label labelmin;
+        private System.Windows.Forms.TextBox txtStopWatch;
+        private System.Windows.Forms.Button btnLog;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnPause;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.ListBox listStopWatchLog;
+        private System.Windows.Forms.Timer timerStopWatch;
     }
 }
 
